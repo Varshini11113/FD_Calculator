@@ -85,19 +85,19 @@ export default function Home() {
 
       <main
         className={
-          "relative sm:p-5 lg:p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "
+          "relative [@media(max-width:1200px)]:p-5 [@media(min-width:1200px)]:p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "
         }
       >
         <div>
           <div
             className={
-              "text-zinc-900 text-5xl font-semibold text-center leading-tight"
+              "text-zinc-900 text-5xl font-semibold text-center leading-tight [@media(max-width:300px)]:text-3xl"
             }
           >
             <span className={"text-blue-600"}>FD</span>{" "}
             Calculator
           </div>
-          <p className={"text-neutral-700 mt-3 sm:text-md lg:text-lg text-center sm:pl-10 sm:pr-10"}>
+          <p className={"text-neutral-700 mt-3 [@media(min-width:200px)]:text-md [@media(max-width:300px)]:text-sm lg:text-lg text-center  "}>
           Fixed deposit (FD) is a type of savings account that pays a fixed rate
           of interest for a specified period of time. It is a safe and secure
           investment option for those looking to save and grow their money.
@@ -110,16 +110,16 @@ export default function Home() {
 
         <div
           className={
-            "flex w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] sm:gap-4 lg:justify-between sm:flex-col md:flex-col lg:flex-row "
+            "flex w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] [@media(min-width:200px)]:gap-4 lg:justify-between [@media(max-width:1000px)]:flex-col md:flex-col lg:flex-row  "
           }
         >
           <div
             className={
-              "flex sm:flex-col md:flex-col lg:flex-row sm:gap-10 p-[30px] sm:w-[100%] lg:w-[75%] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] "
+              "flex [@media(max-width:1000px)]:flex-col flex-row [@media(min-width:200px)]:gap-10 p-[30px] [@media(max-width:1000px)]:w-[100%] lg:w-[75%] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] "
             }
           >
             
-            <div className={"text-left text-lg sm:w-[100%] lg:w-[50%] "}>
+            <div className={"text-left text-lg [@media(max-width:1000px)]:w-[100%] w-[50%] "}>
            
               <div
                 className={
@@ -191,12 +191,12 @@ export default function Home() {
             {/* Line */}
             <div
               className={
-                " -my-4 sm:-mx-2  sm:h-0 sm:w-auto lg:h-auto lg:w-0 rounded-[50px] border-2 border-solid border-[#7070701A]"
+                " -my-4 -mx-2 [@media(max-width:1000px)]:-mx-2  [@media(max-width:1000px)]:h-0 [@media(max-width:1000px)]:w-auto lg:h-auto lg:w-0 rounded-[50px] border-2 border-solid border-[#7070701A]"
               }
             ></div>
 
             {/* Chart */}
-            <div className={"sm:w-[100%] lg:w-[50%]"}>
+            <div className={"[@media(max-width:1000px)]:w-[100%] lg:w-[50%]"}>
               
               <div
                 className={
@@ -230,7 +230,7 @@ export default function Home() {
               </div>
 
               {/* Charts/Graph */}
-              <div className={" relative object-right-top sm:h-auto md:w-[100%]"}>
+              <div className={" relative object-right-top [@media(min-width:200px)]:h-auto md:w-[100%]"}>
                 {isLineChart ? (
                   <>
                     <LineChart points={graphPoints} />
@@ -251,26 +251,26 @@ export default function Home() {
               
               <div className={"flex-col "}>
                
-                <div className={"flex justify-between font-medium mb-3"}>
-                  <div id="FD_output">Total Investment</div>
-                  <div className={"font-bold"}>{`${'\u20B9'} ${totalInvestment.toLocaleString("en-In")}`}</div>
+                <div className={"flex justify-between gap-2  font-medium mb-3 min-w-[230px] [@media(max-width:300px)]:flex-col "}>
+                  <div className={"[@media(max-width:300px)]:w-[170px] [@media(max-width:300px)]:text-center"} id="FD_output">Total Investment</div>
+                  <div className={"font-bold [@media(max-width:300px)]:w-[170px] [@media(max-width:300px)]:text-center"}>{`${'\u20B9'} ${totalInvestment.toLocaleString("en-In")}`}</div>
                 </div>
-                <div className={"flex justify-between font-medium mb-3"}>
-                  <div id="absoluteReturns">Total interest</div>
-                  <div className={"font-bold"}>{`${'\u20B9'} ${estReturns.toLocaleString("en-In")}`}</div>
+                <div className={"flex justify-between gap-2 font-medium mb-3 min-w-[230px] [@media(max-width:300px)]:flex-col [@media(max-width:300px)]:pl-[20px]"}>
+                  <div className={"[@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center"} id="absoluteReturns">Total interest</div>
+                  <div className={"font-bold [@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center"}>{`${'\u20B9'} ${estReturns.toLocaleString("en-In")}`}</div>
                 </div>
-                <div className={"flex justify-between font-medium mb-3"}>
-                  <div id="absoluteReturns">Maturity Value</div>
-                  <div className={"font-bold"}>{`${'\u20B9'} ${maturityValue.toLocaleString("en-In")}`}</div>
+                <div className={"flex justify-between gap-2 font-medium mb-3 min-w-[230px] [@media(max-width:300px)]:flex-col [@media(max-width:300px)]:pl-[20px]"}>
+                  <div className={"[@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center"} id="absoluteReturns">Maturity Value</div>
+                  <div className={"font-bold [@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center"}>{`${'\u20B9'} ${maturityValue.toLocaleString("en-In")}`}</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Side Pannel */}
+          {/* Side Panel */}
           <div
             className={
-              " sm:w-[100%] lg:w-[23%] lg:max-h-[516px] xl:max-h-[403px] px-[20px] py-[22px] sm:mt-[20px] lg:mt-0 border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll"
+              " [@media(max-width:1000px)]:w-[100%] lg:w-[23%] lg:max-h-[516px] xl:max-h-[403px] px-[20px] py-[22px] [@media(max-width:1000px)]:mt-[20px] lg:mt-0 border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
             }
           >
             <div className={"font-bold "}>How to use this calculator?</div>
@@ -298,7 +298,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* FAQ box */}
+        {/* FAQ Panel */}
         <div
           className={
             " px-[25px] py-[10px] mt-[40px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"

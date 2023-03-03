@@ -71,3 +71,15 @@
     flex-direction: column;
   }
 }
+
+@media (min-width: 1000px) {
+  .inputBox input[type="range"] {
+    min-width: 9rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .inputBox input[type="range"] {
+    min-width: 13.25rem;
+  }
+}
