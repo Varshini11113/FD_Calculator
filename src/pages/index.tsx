@@ -85,7 +85,8 @@ export default function Home() {
 
       <main
         className={
-          "relative p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "
+          `${styles.main}
+          ${"relative p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "}`
         }
       >
         <div>
@@ -109,13 +110,13 @@ export default function Home() {
         </div>
 
         <div
-          className={
-            "flex flex-wrap w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] justify-between"
+          className={`${styles.calculatorWrapper}
+            ${"flex flex-wrap w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] justify-between"}`
           }
         >
           <div
-            className={
-              "flex p-[30px] w-[75%] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
+            className={ `${styles.calculator}
+              ${"flex p-[30px] w-[75%] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"}`
             }
           >
             
@@ -228,7 +229,7 @@ export default function Home() {
                 </button>
               </div>
 
-              <div className={"relative object-right-top"}>
+              <div className={`${styles.chart} ${"relative object-right-top"}`}>
                 {isLineChart ? (
                   <>
                     <LineChart points={graphPoints} />
@@ -265,10 +266,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Side Pannel */}
           <div
             className={
-              " xl:max-h-[403px] lg:max-h-[516px]    w-[23%] px-[20px] py-[22px]  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll no-scrollbar"
+              `${styles.sidePanel}
+              ${" xl:max-h-[403px] lg:max-h-[516px]    w-[23%] px-[20px] py-[22px]  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll no-scrollbar"}`
             }
           >
             <div className={"font-bold "}>How to use this calculator?</div>
