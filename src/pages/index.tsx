@@ -252,7 +252,7 @@ export default function Home() {
               <div className={"flex-col "}>
                
                 <div className={"flex justify-between font-medium mb-3"}>
-                  <div id="CAGR_output">Total Investment</div>
+                  <div id="FD_output">Total Investment</div>
                   <div className={"font-bold"}>{`${'\u20B9'} ${totalInvestment.toLocaleString("en-In")}`}</div>
                 </div>
                 <div className={"flex justify-between font-medium mb-3"}>
@@ -270,7 +270,7 @@ export default function Home() {
           {/* Side Pannel */}
           <div
             className={
-              " sm:w-[100%] lg:w-[23%] lg:max-h-[516px] xl:max-h-[403px] px-[20px] py-[22px] sm:mt-[20px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll"
+              " sm:w-[100%] lg:w-[23%] lg:max-h-[516px] xl:max-h-[403px] px-[20px] py-[22px] sm:mt-[20px] lg:mt-0 border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll"
             }
           >
             <div className={"font-bold "}>How to use this calculator?</div>

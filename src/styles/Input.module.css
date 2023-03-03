@@ -6,19 +6,13 @@
   align-items: center;
 }
 
-@media (min-width: 630px) {
-  .inputBox input[type="range"] {
-    height: 50px;
-    width: 50rem;
-  }
-}
 .inputBox input[type="range"] {
   appearance: none;
   background: #dce8f8;
   height: 8px;
   border-radius: 10px;
   cursor: pointer;
-  width: 13.25rem;
+  min-width: 13.25rem;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }
@@ -70,4 +64,10 @@
   border-radius: 50%;
   border: 2px solid #00d87a;
   cursor: pointer;
+}
+
+@media (max-width: 470px) {
+  .inputBox {
+    flex-direction: column;
+  }
 }

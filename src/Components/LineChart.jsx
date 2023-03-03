@@ -71,7 +71,7 @@ export default function Chart({ points }) {
 
         series: [
             {
-                name: 'CAGR',
+                name: 'F',
                 data: null,
             }
         ],
