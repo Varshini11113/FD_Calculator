@@ -85,8 +85,7 @@ export default function Home() {
 
       <main
         className={
-          `${styles.main}
-          ${"relative p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "}`
+          "relative sm:p-5 lg:p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "
         }
       >
         <div>
@@ -98,7 +97,7 @@ export default function Home() {
             <span className={"text-blue-600"}>FD</span>{" "}
             Calculator
           </div>
-          <p className={"text-neutral-700 mt-3 text-lg text-center"}>
+          <p className={"text-neutral-700 mt-3 sm:text-md lg:text-lg text-center sm:pl-10 sm:pr-10"}>
           Fixed deposit (FD) is a type of savings account that pays a fixed rate
           of interest for a specified period of time. It is a safe and secure
           investment option for those looking to save and grow their money.
@@ -110,21 +109,21 @@ export default function Home() {
         </div>
 
         <div
-          className={`${styles.calculatorWrapper}
-            ${"flex flex-wrap w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] justify-between"}`
+          className={
+            "flex w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] sm:gap-4 lg:justify-between sm:flex-col md:flex-col lg:flex-row "
           }
         >
           <div
-            className={ `${styles.calculator}
-              ${"flex p-[30px] w-[75%] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"}`
+            className={
+              "flex sm:flex-col md:flex-col lg:flex-row sm:gap-10 p-[30px] sm:w-[100%] lg:w-[75%] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] "
             }
           >
             
-            <div className={"text-left text-lg w-[50%] "}>
+            <div className={"text-left text-lg sm:w-[100%] lg:w-[50%] "}>
            
               <div
                 className={
-                  "flex-col justify-evenly font-medium   space-y-[20px]"
+                  "flex flex-col font-medium space-y-[20px]"
                 }
               >
                
@@ -189,14 +188,15 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Line */}
             <div
               className={
-                " -my-4 mx-5 w-0 rounded-[50px] border-2 border-solid border-[#7070701A]"
+                " -my-4 sm:-mx-2  sm:h-0 sm:w-auto lg:h-auto lg:w-0 rounded-[50px] border-2 border-solid border-[#7070701A]"
               }
             ></div>
 
-            
-            <div className={"w-[50%]"}>
+            {/* Chart */}
+            <div className={"sm:w-[100%] lg:w-[50%]"}>
               
               <div
                 className={
@@ -229,7 +229,8 @@ export default function Home() {
                 </button>
               </div>
 
-              <div className={`${styles.chart} ${"relative object-right-top"}`}>
+              {/* Charts/Graph */}
+              <div className={" relative object-right-top sm:h-auto md:w-[100%]"}>
                 {isLineChart ? (
                   <>
                     <LineChart points={graphPoints} />
@@ -252,47 +253,47 @@ export default function Home() {
                
                 <div className={"flex justify-between font-medium mb-3"}>
                   <div id="CAGR_output">Total Investment</div>
-                  <div className={"font-semibold"}>{`${'\u20B9'} ${totalInvestment.toLocaleString("en-In")}`}</div>
+                  <div className={"font-bold"}>{`${'\u20B9'} ${totalInvestment.toLocaleString("en-In")}`}</div>
                 </div>
                 <div className={"flex justify-between font-medium mb-3"}>
                   <div id="absoluteReturns">Total interest</div>
-                  <div className={"font-semibold"}>{`${'\u20B9'} ${estReturns.toLocaleString("en-In")}`}</div>
+                  <div className={"font-bold"}>{`${'\u20B9'} ${estReturns.toLocaleString("en-In")}`}</div>
                 </div>
                 <div className={"flex justify-between font-medium mb-3"}>
                   <div id="absoluteReturns">Maturity Value</div>
-                  <div className={"font-semibold"}>{`${'\u20B9'} ${maturityValue.toLocaleString("en-In")}`}</div>
+                  <div className={"font-bold"}>{`${'\u20B9'} ${maturityValue.toLocaleString("en-In")}`}</div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Side Pannel */}
           <div
             className={
-              `${styles.sidePanel}
-              ${" xl:max-h-[403px] lg:max-h-[516px]    w-[23%] px-[20px] py-[22px]  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll no-scrollbar"}`
+              " sm:w-[100%] lg:w-[23%] lg:max-h-[516px] xl:max-h-[403px] px-[20px] py-[22px] sm:mt-[20px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll"
             }
           >
             <div className={"font-bold "}>How to use this calculator?</div>
             <CollapsibleBox
               heading={'Fixed Deposit'}
-              headingBold = {true}
               content={'Fixed deposit (FD) is a type of savings account that pays a fixed rate of interest for a specified period of time. They are suitable for individuals looking for a low-risk investment option.'}
+              isSidePanel={true}
             />
             <CollapsibleBox
               heading={'Find out how much I can earn with FD'}
-              headingBold = {true}
-              content={'Your FD returns depend on the interest rate offered by the bank or company and how long you plan to leave the deposit in.              '}
+              content={'Your FD returns depend on the interest rate offered by the bank or company and how long you plan to leave the deposit in.'}
+              isSidePanel={true}
             />
             <CollapsibleBox
               heading={'Tax Implications on FD'}
-              headingBold = {true}
-              content={'The interest earned on fixed deposits (FDs)is taxable and the rate of tax depends on the individual\'s tax slab. The interest earned on an FD is added to the individual\'s total taxable income and is taxed as per their applicable tax slab.              '}
+              content={'The interest earned on fixed deposits (FDs)is taxable and the rate of tax depends on the individual\'s tax slab. The interest earned on an FD is added to the individual\'s total taxable income and is taxed as per their applicable tax slab.'}
+              isSidePanel={true}
             />
             <CollapsibleBox
               heading={'Premature withdrawal implications'}
-              headingBold = {true}
               content={'Premature withdrawal leads to loss of interest and a penalty will be imposed. The penalty rate varies from partner to partner.'}
-              last ={true}
+              isSidePanel={true}
+              isLast ={true}
             />
           </div>
         </div>
@@ -300,7 +301,7 @@ export default function Home() {
         {/* FAQ box */}
         <div
           className={
-            " px-[25px] py-[10px] mt-[50px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
+            " px-[25px] py-[10px] mt-[40px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
           }
         >
           <CollapsibleBox
@@ -345,7 +346,7 @@ export default function Home() {
             headingBold = {true}
             content={
               "Breaking of FD means to withdraw the deposit before maturity. This is not advisable as it leads to loss of interest and a penalty will be imposed. The penalty rate varies from partner to partner. Please read all documents carefully before investing."}
-              last={true}
+              isLast={true}
           />
         </div>
 
@@ -355,7 +356,7 @@ export default function Home() {
             Related Calculators
           </div>
 
-          <div className={"overflow-x-scroll flex -mx-20  "}>
+          <div className={"no-scrollbar overflow-x-auto flex -mx-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"}>
             <RelatedCalculator
               name={"SWP Calculator"}
               path={"#"}

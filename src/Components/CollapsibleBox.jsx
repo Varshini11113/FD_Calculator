@@ -3,8 +3,8 @@ import Collapsible from 'react-collapsible';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
 
 
-export default function CollapsibleBox({ heading, headingBold = false, content, last = false }) {
-  let weight = 500;
+export default function CollapsibleBox({ heading, headingBold = false, content, isLast = false , isSidePanel = false}) {
+  let weight = 400;
   if (headingBold) {
     weight = 600;
   }
@@ -13,7 +13,7 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
     fontWeight: weight,
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '0.5rem',
+    margin: '0.5rem 0.5rem 0.5rem 0',
   }
   return (
     <>
@@ -22,12 +22,12 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
         triggerWhenOpen={[heading, <HiOutlineChevronUp style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
         triggerStyle={style}
       >
-        {content}
+        <div className={isSidePanel? "text-sm" : ""}>{content}</div>
       </Collapsible >
 
       {/* line */}
 
-      {last ? <div className='mb-1'></div> : <div style={{ width: 100 + '%', height: '0px', border: '0.5px solid #C4C4C4', opacity: 1, marginTop: '0.5rem', }}></div>}
+      {isLast ? <div className='mb-1'></div> : <div style={isSidePanel? { width: 100 + '%', height: '0px', border: '0.5px solid #C4C4C4', opacity: 0.6, marginTop: '0.5rem', marginBottom: '0.5rem' } : { width: 100 + '%', height: '0px', border: '0.5px solid #C4C4C4', opacity: 0.6, marginTop: '1rem', marginBottom: '1rem' }}></div>}
 
     </>
   );
