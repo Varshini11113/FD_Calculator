@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "../Components/Input.jsx";
 import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
@@ -17,23 +17,50 @@ export default function Home() {
   const [isLineChart, setCheck] = useState(true);
   const [graphPoints, setGraphPoints] = useState([107000, 114490, 122504, 131080, 140255, 150073, 160578, 171819, 183846,
     196715]);
-  const [totalValue, setTotalValue] = useState(196715);
+  const [maturityValue, setMaturityValue] = useState(196715);
   const [estReturns, setEstReturns] = useState(96715);
   
-  const calculate = () => {
-    setTotalValue(totalInvestment * Math.pow(1 + interestRate, timePeriod));
-    setEstReturns(totalValue - totalInvestment);
+  useEffect(() => {
+    console.log('myValue changed to:', maturityValue);
+    setMaturityValue(maturityValue);
+    calculateGraphPoints();
+  }, [maturityValue]);
+  useEffect(() => {
+    console.log('myValue changed to:', estReturns);
+    setEstReturns(estReturns);
+    calculateGraphPoints();
+  }, [estReturns]);
+  useEffect(() => {
+    console.log('myValue changed to:', interestRate);
+    setInterestRate(interestRate);
+    calculateGraphPoints();
+  }, [interestRate]);
+
+
+
+  function calculate()  {
+    calculateGraphPoints();
+    let cumulativeAmount: number = Number(totalInvestment);
+    for (let i = 1; i <= timePeriod; i++) {
+      cumulativeAmount += (cumulativeAmount * interestRate) / 100;
+    }
+    // let cumulativeAmount: number = totalInvestment * Math.pow(1 + interestRate, timePeriod);
+    // setMaturityValue(totalInvestment * Math.pow(1 + interestRate, timePeriod));
+    setEstReturns(Math.ceil(maturityValue - totalInvestment));
+    setMaturityValue(Math.ceil(cumulativeAmount));
+    setEstReturns(Math.ceil(maturityValue - totalInvestment));
     calculateGraphPoints();
   }
   
-  const calculateGraphPoints = () => {
-    let points = [];
-    let cumulativeAmount = totalInvestment;
+  function calculateGraphPoints()  {
+    let points: number[] = [];
+    let cumulativeAmount: number = Number(totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
       points.push(cumulativeAmount); //[100000, 107000, 114490]
       cumulativeAmount += (cumulativeAmount * interestRate) / 100;
     }
     points.push(cumulativeAmount);
+    // setEstReturns(cumulativeAmount - totalInvestment);
     setGraphPoints(points);
   }
   
@@ -117,6 +144,7 @@ export default function Home() {
                 <div>Interest rate</div>
                   <Input
                     id='interestRate'
+                    type="percentage"
                     value={interestRate}
                     setValue={setInterestRate}
                     min={1}
@@ -209,9 +237,9 @@ export default function Home() {
                 ) : (
                   <>
                     <DoughnutChart
-                      initialInvestment={estReturns}
-                      finalInvestment={totalInvestment}
-                      dependency={estReturns}
+                      totalInterest={estReturns}
+                      investmentAmount={totalInvestment}
+                      maturityValue={maturityValue}
                     />
                     
                   </>
@@ -231,7 +259,7 @@ export default function Home() {
                 </div>
                 <div className={"flex justify-between font-medium mb-3"}>
                   <div id="absoluteReturns">Maturity Value</div>
-                  <div className={"font-semibold"}>{`${'\u20B9'} ${totalValue.toLocaleString("en-In")}`}</div>
+                  <div className={"font-semibold"}>{`${'\u20B9'} ${maturityValue.toLocaleString("en-In")}`}</div>
                 </div>
               </div>
             </div>

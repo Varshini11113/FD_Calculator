@@ -3,7 +3,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useState, useEffect } from "react";
 
-function DoughnutChart({ initialInvestment, finalInvestment, dependency }) {
+function DoughnutChart({ totalInterest, investmentAmount, maturityValue }) {
 
   const [option, setOptions] = useState({
     chart: {
@@ -54,14 +54,14 @@ function DoughnutChart({ initialInvestment, finalInvestment, dependency }) {
         series: [{
           data: [
             {
-              name: 'Final investment',
-              y: finalInvestment,
+              name: 'Total Investment',
+              y: investmentAmount,
               color: '#0161FF',
               showInLegend: false,
             },
             {
-              name: 'Initial investment',
-              y: initialInvestment,
+              name: 'Total Interest',
+              y: totalInterest,
               color: '#2ecc71',
               showInLegend: false,
             }
@@ -69,7 +69,7 @@ function DoughnutChart({ initialInvestment, finalInvestment, dependency }) {
         }],
       })
     })
-  }, [dependency])
+  }, [maturityValue])
 
   return (
 
