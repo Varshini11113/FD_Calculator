@@ -6,6 +6,7 @@ import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
 import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
 import RelatedCalculator from "@/Components/RelatedCalculator.jsx";
+import styles from "../styles/Home.module.css"
 
 import { FaChartPie, FaChartLine } from "react-icons/fa";
 import { MdOutlineShowChart } from "react-icons/md";
@@ -17,8 +18,8 @@ export default function Home() {
   const [isLineChart, setCheck] = useState(true);
   const [graphPoints, setGraphPoints] = useState([107000, 114490, 122504, 131080, 140255, 150073, 160578, 171819, 183846,
     196715]);
-  const [maturityValue, setMaturityValue] = useState(196715);
-  const [estReturns, setEstReturns] = useState(96715);
+  const [maturityValue, setMaturityValue] = useState(196716);
+  const [estReturns, setEstReturns] = useState(96716);
   
   useEffect(() => {
     console.log('myValue changed to:', maturityValue);
@@ -57,7 +58,7 @@ export default function Home() {
     let cumulativeAmount: number = Number(totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
       points.push(cumulativeAmount); //[100000, 107000, 114490]
-      cumulativeAmount += (cumulativeAmount * interestRate) / 100;
+      cumulativeAmount += Math.ceil((cumulativeAmount * interestRate) / 100);
     }
     points.push(cumulativeAmount);
     // setEstReturns(cumulativeAmount - totalInvestment);
@@ -176,8 +177,8 @@ export default function Home() {
                   }
                 >
                   <div
-                    className={
-                      "text-center text-white font-semibold rounded-[35px] p-[0.3rem]   shadow-lg shadow-[#36b3665d] bg-[#00d382]"
+                    className={ 
+                      "text-center text-white font-semibold rounded-[35px] p-[0.3rem] shadow-lg shadow-[#36b3665d] bg-[#00d382]"
                     }
                     onClick={calculate}
                   >
@@ -227,8 +228,7 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* Charts/Graph */}
-              <div className={" relative object-right-top"}>
+              <div className={"relative object-right-top"}>
                 {isLineChart ? (
                   <>
                     <LineChart points={graphPoints} />
