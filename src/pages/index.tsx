@@ -15,23 +15,24 @@ export default function Home() {
   const [interestRate, setInterestRate] = useState(7);
   const [timePeriod, setTimePeriod] = useState(10);
   const [isLineChart, setCheck] = useState(true);
-  const [graphPoints, setGraphPoints] = useState([107000, 114490, 122504, 131080, 140255, 150073, 160578, 171819, 183846,
+  let [graphPoints, setGraphPoints] = useState([107000, 114490, 122504, 131080, 140255, 150073, 160578, 171819, 183846,
     196715]);
   const [totalValue, setTotalValue] = useState(196715);
   const [estReturns, setEstReturns] = useState(96715);
   
   const calculate = () => {
-    setTotalValue(totalInvestment * Math.pow(1 + interestRate, timePeriod));
+    setTotalValue(totalInvestment+(totalInvestment *timePeriod*interestRate)/100);
     setEstReturns(totalValue - totalInvestment);
     calculateGraphPoints();
   }
   
   const calculateGraphPoints = () => {
-    let points = [];
+    const points=[];
     let cumulativeAmount = totalInvestment;
     for (let i = 1; i <= timePeriod; i++) {
       points.push(cumulativeAmount); //[100000, 107000, 114490]
-      cumulativeAmount += (cumulativeAmount * interestRate) / 100;
+      console.log(cumulativeAmount);
+      cumulativeAmount += ((totalInvestment+(totalInvestment*i*interestRate))/ 100);
     }
     points.push(cumulativeAmount);
     setGraphPoints(points);
