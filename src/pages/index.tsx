@@ -6,7 +6,7 @@ import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
 import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
 import RelatedCalculator from "@/Components/RelatedCalculator.jsx";
-import styles from "../styles/Home.module.css"
+import styles from "../styles/Home.module.css";
 
 import { FaChartPie, FaChartLine } from "react-icons/fa";
 import { MdOutlineShowChart } from "react-icons/md";
@@ -25,10 +25,13 @@ export default function Home() {
     console.log('myValue changed to:', maturityValue);
     setEstReturns(Math.ceil(maturityValue - totalInvestment));
   }, [maturityValue]);
+
   useEffect(() => {
     calculateGraphPoints();
   }, [estReturns]);
+  
 
+  
   function calculate()  {
     let cumulativeAmount: number = Number(totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
@@ -53,11 +56,6 @@ export default function Home() {
     <>
       <Head>
         <title>FD Calculator</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com"  />
-        <link rel="stylesheet" as="font" data-href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&amp;family=Rubik:wght@400;500;600&amp;display=swap" />
-        <link href="/dist/output.css" rel="stylesheet" />
-        <link rel="icon" href='./logo.png' />
       </Head>
 
       <div

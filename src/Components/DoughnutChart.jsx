@@ -10,6 +10,7 @@ function DoughnutChart({ totalInterest, investmentAmount, maturityValue }) {
       type: 'pie',
       backgroundColor: 'transparent',
       height: '208px',
+      boost: false,
     },
     title: {
       text: '',
