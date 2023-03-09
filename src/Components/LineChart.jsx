@@ -23,6 +23,7 @@ export default function Chart({ points }) {
             },
             gridLineWidth: 1,
             gridZIndex: 2,
+            allowDecimals: false,
         },
 
         yAxis: {
@@ -90,7 +91,7 @@ export default function Chart({ points }) {
                 }
             })
         })
-    }, points);
+    }, [points]);
 
     return (
 
