@@ -23,34 +23,18 @@ export default function Home() {
   
   useEffect(() => {
     console.log('myValue changed to:', maturityValue);
-    setMaturityValue(maturityValue);
-    calculateGraphPoints();
+    setEstReturns(Math.ceil(maturityValue - totalInvestment));
   }, [maturityValue]);
   useEffect(() => {
-    console.log('myValue changed to:', estReturns);
-    setEstReturns(estReturns);
     calculateGraphPoints();
   }, [estReturns]);
-  useEffect(() => {
-    console.log('myValue changed to:', interestRate);
-    setInterestRate(interestRate);
-    calculateGraphPoints();
-  }, [interestRate]);
-
-
 
   function calculate()  {
-    calculateGraphPoints();
     let cumulativeAmount: number = Number(totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
       cumulativeAmount += (cumulativeAmount * interestRate) / 100;
     }
-    // let cumulativeAmount: number = totalInvestment * Math.pow(1 + interestRate, timePeriod);
-    // setMaturityValue(totalInvestment * Math.pow(1 + interestRate, timePeriod));
-    setEstReturns(Math.ceil(maturityValue - totalInvestment));
     setMaturityValue(Math.ceil(cumulativeAmount));
-    setEstReturns(Math.ceil(maturityValue - totalInvestment));
-    calculateGraphPoints();
   }
   
   function calculateGraphPoints()  {
@@ -61,7 +45,6 @@ export default function Home() {
       cumulativeAmount += Math.ceil((cumulativeAmount * interestRate) / 100);
     }
     points.push(cumulativeAmount);
-    // setEstReturns(cumulativeAmount - totalInvestment);
     setGraphPoints(points);
   }
   
