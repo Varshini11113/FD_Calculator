@@ -81,21 +81,26 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
     //       setValue(newValue);
     //   };
 
-    const [textValue, setTextValue] = useState(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In"));
+    const [textValue, setTextValue] = useState(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In") + ((type === 'percentage') ? '%' : ''));
 
 
     const handleSliderValue = (event) => {
         let tempValue = event.target.value;
         setValue(Number(tempValue));
-        setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(tempValue).toLocaleString("en-In"));
+        setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(tempValue).toLocaleString("en-In") + ((type === 'percentage') ? '%' : ''));
         //console.log(value, textValue);
     }
 
 
     const addSymbol = (event) => {
+        let tempValue = event.target.value;
         if (!(String(textValue).charAt(0) == '\u20B9')) {
-            setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(event.target.value).toLocaleString("en-In"));
+            tempValue = ((type === 'rupees') ? '\u20B9' : '') + Number(tempValue).toLocaleString("en-In");
         }
+        if (!(String(textValue).charAt(-1) == '%')) {
+            tempValue += ((type === 'percentage') ? '%' : '');
+        }
+        setTextValue(tempValue);
     }
 
     const removeSymbol = (event) => {
