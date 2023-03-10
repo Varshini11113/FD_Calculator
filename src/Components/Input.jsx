@@ -29,23 +29,26 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
        //New==>
     // const [dollars, setDollars] = useState("");
     // const [percent, setPercent] = useState("");
-    const [formattedValue, setFormattedValue] = useState(((type === 'rupees') ? '$' : '') + value + ((type === 'percentage') ? '%' : ''));
-    const handleFocus = (event) =>{
-        setFormattedValue(Number(event.target.value.replace(/[\$\%]/g, "")));
-        // console.log(cleanValue);
-    }
+    // const [formattedValue, setFormattedValue] = useState(((type === 'rupees') ? '$' : '') + value + ((type === 'percentage') ? '%' : ''));
+    // const handleFocus = (event) =>{
+    //     setFormattedValue(Number(event.target.value.replace(/[\$\%]/g, "")));
+    //     // console.log(cleanValue);
+    // }
  
-    const handleBlur = (event) =>{
-        setFormattedValue(((type === 'rupees') ? '$' : '') + event.target.value + ((type === 'percentage') ? '%' : ''));
-        console.log("Blur");
+    // const handleBlur = (event) =>{
+    //     setFormattedValue(((type === 'rupees') ? '$' : '') + event.target.value + ((type === 'percentage') ? '%' : ''));
+    //     // console.log("Blur");
 
-    }
-    const handleChange = (event) =>{
-        setCleanValue(event.target.value);
-         // remove $ and % symbols
-        const isValid = /^(\d+(\.\d{1,2})?)$/.test(cleanValue);
-        console.log(isValid)
-    }
+    // }
+    // const handleChange = (event) =>{
+    //     let input = event.target.value;
+    //     setFormattedValue();
+    //     const isValid = /^(\d+(\.\d{1,2})?)$/.test(input);
+    //     isValid ? setFormattedValue(input) : setFormattedValue(min);
+    //      // remove $ and % symbols
+    //     // const isValid = /^(\d+(\.\d{1,2})?)$/.test(cleanValue);
+    //     // console.log(isValid)
+    // }
     // const handleChange = (event) => {
     //     let newValue = event.target.value;
     //     if (newValue.startsWith("$")) {
@@ -78,6 +81,46 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
     //       setValue(newValue);
     //   };
 
+    const [textValue, setTextValue] = useState(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In"));
+
+
+    const handleSliderValue = (event) => {
+        let tempValue = event.target.value;
+        setValue(Number(tempValue));
+        setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(tempValue).toLocaleString("en-In"));
+        //console.log(value, textValue);
+    }
+
+
+    const addSymbol = (event) => {
+        if (!(String(textValue).charAt(0) == '\u20B9')) {
+            setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(event.target.value).toLocaleString("en-In"));
+        }
+    }
+
+    const removeSymbol = (event) => {
+        setTextValue(event.target.value.replace(/,|\u20B9|%/g, ''));
+    }
+
+
+
+
+    const handleTextValue = (event) => {
+
+        let tempValue = event.target.value;
+        if ((!(isNaN(tempValue)) && tempValue > 0 && tempValue <= max) || tempValue == '' || tempValue == '0') {
+
+            if (tempValue == "") {
+                tempValue = '0';
+            }
+            else if (tempValue.length == 2 && tempValue.charAt(0) == '0') {
+                tempValue = tempValue.charAt(1);
+            }
+            setTextValue(tempValue);
+            setValue(Number(tempValue));
+        }
+
+    };
     return (
         <div className={styles.inputBox}>
                 <div>
@@ -88,7 +131,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                     step={step}
                     value={value}
                     id={id}
-                    onChange={handleChange}
+                    onChange={handleSliderValue}
                     className={' accent-[#00D382] bg-transparent my-4 '}
                 />
                 </div>
@@ -97,14 +140,14 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                 <input
                     type="text"
                     // value={((type === 'rupees') ? '$' : '') + value + ((type === 'percentage') ? '%' : '')}
-                    value={cleanValue}
+                    value={textValue}
                     id={`${id}Label`}
                     min={min}
                     max={max}
                     className={'w-[150px] h-[40px] bg-[#D1E3FF] bg-opacity-[0.39] border-2 border-solid border-[#9BB0D3] rounded-[100px] text-center font-semibold '}
-                    onFocus={handleFocus}
-                    onBlur= {handleBlur}
-                    onChange={handleChange}
+                    onBlur={(type === '') ? null : addSymbol}
+                    onFocus={(type === '') ? null : removeSymbol}
+                    onChange={handleTextValue}
                 />
                 </div>
                 
