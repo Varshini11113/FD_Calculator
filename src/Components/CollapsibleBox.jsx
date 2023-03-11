@@ -18,11 +18,11 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
   return (
     <>
       <Collapsible
-        trigger={[heading, <HiOutlineChevronDown style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
-        triggerWhenOpen={[heading, <HiOutlineChevronUp style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
+        trigger={[<div className='pr-[15px] font-semibold'>{heading}</div>, <HiOutlineChevronDown style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px', marginRight: "-10px"}} />]}
+        triggerWhenOpen={[<div className='pr-[15px] font-semibold'>{heading}</div>, <HiOutlineChevronUp style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px', marginRight: "-10px" }} />]}
         triggerStyle={style}
       >
-        {content}
+        <div className='font-normal'>{content}</div>
       </Collapsible >
 
       {/* line */}

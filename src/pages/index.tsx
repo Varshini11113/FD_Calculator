@@ -6,7 +6,7 @@ import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
 import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
 import RelatedCalculator from "@/Components/RelatedCalculator.jsx";
-import styles from "../styles/Home.module.css"
+import styles from "../styles/Home.module.css";
 
 import { FaChartPie, FaChartLine } from "react-icons/fa";
 import { MdOutlineShowChart } from "react-icons/md";
@@ -95,7 +95,7 @@ export default function Home() {
         >
           <div
             className={
-              "flex [@media(max-width:1000px)]:flex-col flex-row [@media(min-width:200px)]:gap-10 p-[30px] [@media(max-width:1000px)]:w-[100%] lg:w-[75%] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] "
+              "flex w-[50%] [@media(max-width:1000px)]:flex-col flex-row [@media(min-width:200px)]:gap-10 p-[30px] [@media(max-width:1000px)]:w-[100%] lg:w-[75%] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] "
             }
           >
             
@@ -198,14 +198,14 @@ export default function Home() {
                 <button
                   className={
                     isLineChart
-                      ? "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
-                      : "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
+                      ? "flex justify-center items-center w-[23px] h-[23px] rounded-[50px]  text-[#909090]"
+                      : "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white "
                   }
                   onClick={() => {
                     setCheck(false);
                   }}
                 >
-                  <FaChartPie />
+                  <FaChartPie size={13} />
                 </button>
               </div>
 
@@ -233,15 +233,15 @@ export default function Home() {
                
                 <div className={"flex justify-between gap-2  font-medium mb-3 min-w-[230px] [@media(max-width:300px)]:flex-col "}>
                   <div className={"[@media(max-width:300px)]:w-[170px] [@media(max-width:300px)]:text-center"} id="FD_output">Total Investment</div>
-                  <div className={"font-bold [@media(max-width:300px)]:w-[170px] [@media(max-width:300px)]:text-center"}>{`${'\u20B9'} ${totalInvestment.toLocaleString("en-In")}`}</div>
+                  <div className={"font-bold [@media(max-width:300px)]:w-[170px] [@media(max-width:300px)]:text-center text-[#1B1C20]"}>{`${'\u20B9'} ${totalInvestment.toLocaleString("en-In")}`}</div>
                 </div>
                 <div className={"flex justify-between gap-2 font-medium mb-3 min-w-[230px] [@media(max-width:300px)]:flex-col [@media(max-width:300px)]:pl-[20px]"}>
                   <div className={"[@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center"} id="absoluteReturns">Total interest</div>
-                  <div className={"font-bold [@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center"}>{`${'\u20B9'} ${estReturns.toLocaleString("en-In")}`}</div>
+                  <div className={"font-bold [@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center text-[#1B1C20]"}>{`${'\u20B9'} ${estReturns.toLocaleString("en-In")}`}</div>
                 </div>
                 <div className={"flex justify-between gap-2 font-medium mb-3 min-w-[230px] [@media(max-width:300px)]:flex-col [@media(max-width:300px)]:pl-[20px]"}>
                   <div className={"[@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center"} id="absoluteReturns">Maturity Value</div>
-                  <div className={"font-bold [@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center"}>{`${'\u20B9'} ${maturityValue.toLocaleString("en-In")}`}</div>
+                  <div className={"font-bold [@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center text-[#1B1C20]"}>{`${'\u20B9'} ${maturityValue.toLocaleString("en-In")}`}</div>
                 </div>
               </div>
             </div>
@@ -250,7 +250,7 @@ export default function Home() {
           {/* Side Panel */}
           <div
             className={
-              " [@media(max-width:1000px)]:w-[100%] lg:w-[23%] lg:max-h-[516px] xl:max-h-[403px] px-[20px] py-[22px] [@media(max-width:1000px)]:mt-[20px] lg:mt-0 border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+              " w-[30%] [@media(max-width:1000px)]:w-[100%] lg:w-[23%] lg:max-h-[516px] xl:max-h-[403px] px-[20px] py-[22px] [@media(max-width:1000px)]:mt-[20px] lg:mt-0 border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll"
             }
           >
             <div className={"font-bold "}>How to use this calculator?</div>

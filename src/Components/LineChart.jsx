@@ -19,11 +19,17 @@ export default function Chart({ points }) {
         xAxis: {
             // tickInterval: 2,
             labels: {
-                step: 1
+                step: 1,
+                style: {
+                    color: "#000000",
+                    opacity: 40,
+                },
             },
             gridLineWidth: 1,
             gridZIndex: 2,
             allowDecimals: false,
+            tickLength: 0,
+            
         },
 
         yAxis: {
@@ -34,7 +40,8 @@ export default function Chart({ points }) {
             labels: {
                 enabled: false,
             },
-            gridLineColor: 'white',
+            gridLineColor: null,
+            
         },
 
         plotOptions: {
