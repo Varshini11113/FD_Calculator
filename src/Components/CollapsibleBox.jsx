@@ -22,7 +22,7 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
         triggerWhenOpen={[heading, <HiOutlineChevronUp style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
         triggerStyle={style}
       >
-        <div className={isSidePanel? "text-sm" : ""}>{content}</div>
+        {content}
       </Collapsible >
 
       {/* line */}

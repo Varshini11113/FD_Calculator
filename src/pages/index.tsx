@@ -53,11 +53,6 @@ export default function Home() {
     <>
       <Head>
         <title>FD Calculator</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com"  />
-        <link rel="stylesheet" as="font" data-href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&amp;family=Rubik:wght@400;500;600&amp;display=swap" />
-        <link href="/dist/output.css" rel="stylesheet" />
-        <link rel="icon" href='./logo.png' />
       </Head>
 
       <div
@@ -68,19 +63,21 @@ export default function Home() {
 
       <main
         className={
-          "relative [@media(max-width:1200px)]:p-5 [@media(min-width:1200px)]:p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "
+          "relative [@media(max-width:1200px)]:p-5 [@media(min-width:1200px)]:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] "
         }
       >
         <div>
           <div
             className={
-              "text-zinc-900 text-5xl font-semibold text-center leading-tight [@media(max-width:300px)]:text-3xl"
+              "text-zinc-900 font-semibold text-[36px] text-center leading-tight [@media(max-width:300px)]:text-3xl"
             }
           >
-            <span className={"text-blue-600"}>FD</span>{" "}
+            <span className={"text-blue-600 font-semibold text-[36px]"}>FD</span>{" "}
             Calculator
           </div>
-          <p className={"text-neutral-700 mt-3 [@media(min-width:200px)]:text-md [@media(max-width:300px)]:text-sm lg:text-lg text-center  "}>
+          <p className={" mt-3 [@media(max-width:300px)]:text-sm text-center "}>
+
+          {/* <p className={"text-neutral-700 mt-3 [@media(min-width:200px)]:text-md [@media(max-width:300px)]:text-sm lg:text-lg text-center  "}> */}
           Fixed deposit (FD) is a type of savings account that pays a fixed rate
           of interest for a specified period of time. It is a safe and secure
           investment option for those looking to save and grow their money.
@@ -102,7 +99,7 @@ export default function Home() {
             }
           >
             
-            <div className={"text-left text-lg [@media(max-width:1000px)]:w-[100%] w-[50%] "}>
+            <div className={"text-left [@media(max-width:1000px)]:w-[100%] w-[50%] "}>
            
               <div
                 className={
@@ -156,12 +153,12 @@ export default function Home() {
               >
                 <div
                   className={
-                    " border-[0.1rem] border-dashed border-[#36b366] p-[4px] rounded-[35px] w-[65%]"
+                    " border-[1px] border-dashed border-[#00D382] p-[4px] rounded-[35px] w-[250px] h-[56px]"
                   }
                 >
                   <div
                     className={ 
-                      "text-center text-white font-semibold rounded-[35px] p-[0.3rem] shadow-lg shadow-[#36b3665d] bg-[#00d382]"
+                      "flex justify-center items-center text-white font-semibold rounded-[35px] top-[612px] left-[260px] shadow-lg shadow-[#36b3665d] bg-[#00d382] h-[100%] text-[18px]"
                     }
                     onClick={calculate}
                   >
@@ -189,8 +186,8 @@ export default function Home() {
                 <button
                   className={
                     isLineChart
-                      ? " w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
-                      : " w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
+                      ? "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
+                      : "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
                   }
                   onClick={() => {
                     setCheck(true);
@@ -201,8 +198,8 @@ export default function Home() {
                 <button
                   className={
                     isLineChart
-                      ? " w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
-                      : " w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
+                      ? "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
+                      : "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
                   }
                   onClick={() => {
                     setCheck(false);
