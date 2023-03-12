@@ -22,7 +22,10 @@ export default function Chart({ points }) {
                 step: 1,
                 style: {
                     color: "#000000",
-                    opacity: 40,
+                    opacity: 0.4,
+                    fontFamily: 'poppins',
+                    fontSize: '12px',
+                    fontWeight: 400,
                 },
             },
             gridLineWidth: 1,
@@ -41,6 +44,11 @@ export default function Chart({ points }) {
                 enabled: false,
             },
             gridLineColor: null,
+            style: {
+                fontFamily: 'poppins',
+                fontSize: '12px',
+                fontWeight: '400',
+                color: '#000000',},
             
         },
 
