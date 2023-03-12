@@ -65,11 +65,9 @@ export default function Chart({ points }) {
             backgroundColor: '#FFFFFF',
             borderColor: '#FFFFFF',
             borderRadius: 20,
-            style: {
-                color: '#000000',
-            },
-            formatter() {
-                return `Amount <strong>\u20B9 ${Number(this.y.toFixed(0)).toLocaleString("en-In")}</strong> <br> Year <strong> ${this.x} </strong>`
+            useHTML: true,
+            formatter: function() {
+                return `<span style="color:#979797"> Amount    <span style="color:#1B1C20; font-weight: 600;">\u20B9 ${Number(this.y.toFixed(0)).toLocaleString("en-In")}</span> <br> Year    <span style="color:#1B1C20; font-weight: 600;"> ${this.x} </span> </span>`
             }
         },
 

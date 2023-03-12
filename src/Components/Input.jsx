@@ -137,7 +137,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                     value={value}
                     id={id}
                     onChange={handleSliderValue}
-                    className={' accent-[#00D382] bg-transparent my-4 '}
+                    className={' accent-[#00D382] bg-transparent my-4 mr-[25px]'}
                 />
                 </div>
                 
@@ -149,7 +149,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                     id={`${id}Label`}
                     min={min}
                     max={max}
-                    className={'w-[150px] h-[40px] bg-[#D1E3FF] bg-opacity-[0.39] border-2 border-solid border-[#9BB0D3] rounded-[100px] text-center font-semibold '}
+                    className={'w-[150px] [@media(min-width:360px)]:w-[100%] h-[40px] bg-[#D1E3FF] bg-opacity-[0.39] border-2 border-solid border-[#9BB0D3] rounded-[100px] text-center font-semibold text-[#1B1C20]'}
                     onBlur={(type === '') ? null : addSymbol}
                     onFocus={(type === '') ? null : removeSymbol}
                     onChange={handleTextValue}
