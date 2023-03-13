@@ -12,7 +12,7 @@
   height: 8px;
   border-radius: 10px;
   cursor: pointer;
-  min-width: 13.25rem;
+  min-width: 212px;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }
@@ -86,6 +86,6 @@
 
 @media (min-width: 1200px) {
   .inputBox input[type="range"] {
-    min-width: 13.25rem;
+    min-width: 212px;
   }
 }
