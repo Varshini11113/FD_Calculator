@@ -128,18 +128,22 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
     };
     return (
         <div className={styles.inputBox}>
+            <div>
                 <div>
-                <input
-                    type="range"
-                    min={min}
-                    max={max}
-                    step={step}
-                    value={value}
-                    id={id}
-                    onChange={handleSliderValue}
-                    className={' accent-[#00D382] bg-transparent my-4 mr-[25px]'}
-                />
+                    <input
+                        type="range"
+                        min={min}
+                        max={max}
+                        step={step}
+                        value={value}
+                        id={id}
+                        onChange={handleSliderValue}
+                        className={' accent-[#00D382] bg-transparent my-4 mr-[25px]'}
+                    />
                 </div>
+                {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>minimum value is {min}.</div> : ''}
+            </div>
+                
                 
                 <div>
                 <input

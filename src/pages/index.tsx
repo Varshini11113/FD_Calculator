@@ -1,18 +1,17 @@
 import Head from "next/head";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import Input from "../Components/Input.jsx";
 import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
 import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
 import RelatedCalculator from "@/Components/RelatedCalculator.jsx";
-import styles from "../styles/Home.module.css";
 
 import { FaChartPie, FaChartLine } from "react-icons/fa";
 import { MdOutlineShowChart } from "react-icons/md";
 
 export default function Home() {
   const [totalInvestment, setTotalInvestment] = useState(100000);
+  const [dummyTotalInvestment, setDummyTotalInvestment] = useState(100000);
   const [interestRate, setInterestRate] = useState(7);
   const [timePeriod, setTimePeriod] = useState(10);
   const [isLineChart, setCheck] = useState(true);
@@ -20,25 +19,34 @@ export default function Home() {
     196715]);
   const [maturityValue, setMaturityValue] = useState(196716);
   const [estReturns, setEstReturns] = useState(96716);
+
   
+  // useEffect(() => {
+  //   console.log('mat val changed to:', maturityValue);
+  //   setEstReturns(Math.ceil(maturityValue - totalInvestment));
+  //   calculateGraphPoints();
+  // }, [maturityValue]);
+
   useEffect(() => {
-    console.log('myValue changed to:', maturityValue);
-    setEstReturns(Math.ceil(maturityValue - totalInvestment));
-  }, [maturityValue]);
-  useEffect(() => {
+    console.log('est val changed to:', estReturns);
     calculateGraphPoints();
   }, [estReturns]);
 
   function calculate()  {
-    let cumulativeAmount: number = Number(totalInvestment);
+    let cumulativeAmount = totalInvestment;
     for (let i = 1; i <= timePeriod; i++) {
       cumulativeAmount += (cumulativeAmount * interestRate) / 100;
     }
+    let dummyest = Math.ceil(cumulativeAmount - totalInvestment);
+    setDummyTotalInvestment(totalInvestment);
+    setEstReturns(dummyest);
     setMaturityValue(Math.ceil(cumulativeAmount));
+    calculateGraphPoints();
   }
   
+
   function calculateGraphPoints()  {
-    let points: number[] = [];
+    let points = [];
     let cumulativeAmount: number = Number(totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
       points.push(cumulativeAmount); //[100000, 107000, 114490]
@@ -91,7 +99,7 @@ export default function Home() {
 
         <div
           className={
-            "flex w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] [@media(max-width:1000px)]:mt-[30px] [@media(min-width:200px)]:gap-4 lg:justify-between [@media(max-width:1000px)]:flex-col md:flex-col lg:flex-row  "
+            "flex w-full lg:max-h-[382.02px] mt-[50px] [@media(max-width:1000px)]:mt-[30px] [@media(min-width:200px)]:gap-4 lg:justify-between [@media(max-width:1000px)]:flex-col md:flex-col lg:flex-row  "
           }
         >
           <div
@@ -234,7 +242,7 @@ export default function Home() {
                
                 <div className={"flex justify-between gap-2  font-medium mb-3 min-w-[230px] [@media(max-width:300px)]:flex-col"}>
                   <div className={"[@media(max-width:300px)]:w-[170px] [@media(max-width:300px)]:text-center "} id="FD_output">Total Investment</div>
-                  <div className={"font-bold [@media(max-width:300px)]:w-[170px] [@media(max-width:300px)]:text-center text-[#1B1C20]"}>{`${'\u20B9'} ${totalInvestment.toLocaleString("en-In")}`}</div>
+                  <div className={"font-bold [@media(max-width:300px)]:w-[170px] [@media(max-width:300px)]:text-center text-[#1B1C20]"}>{`${'\u20B9'} ${dummyTotalInvestment.toLocaleString("en-In")}`}</div>
                 </div>
                 <div className={"flex justify-between gap-2 font-medium mb-3 min-w-[230px] [@media(max-width:300px)]:flex-col [@media(max-width:300px)]:pl-[20px]"}>
                   <div className={"[@media(max-width:300px)]:w-[130px] [@media(max-width:300px)]:text-center"} id="absoluteReturns">Total interest</div>
@@ -251,7 +259,7 @@ export default function Home() {
           {/* Side Panel */}
           <div
             className={
-              " w-[30%] [@media(max-width:1000px)]:w-[100%] lg:w-[23%] lg:max-h-[516px] xl:max-h-[403px] px-[20px] py-[22px] [@media(max-width:1000px)]:px-[15px] [@media(max-width:1000px)]:py-[20px] [@media(max-width:1000px)]:mt-[20px] lg:mt-0 border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll"
+              " w-[30%] [@media(max-width:1000px)]:w-[100%] lg:w-[23%] max-h-['inherit'] px-[20px] py-[22px] [@media(max-width:1000px)]:px-[15px] [@media(max-width:1000px)]:py-[20px] [@media(max-width:1000px)]:mt-[20px] lg:mt-0 border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll"
             }
           >
             <div className={"font-bold "}>How to use this calculator?</div>

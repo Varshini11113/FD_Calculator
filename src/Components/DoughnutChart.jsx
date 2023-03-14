@@ -9,7 +9,7 @@ function DoughnutChart({ totalInterest, investmentAmount, maturityValue }) {
     chart: {
       type: 'pie',
       backgroundColor: 'transparent',
-      height: '208px',
+      height: '220px',
     },
     title: {
       text: '',
@@ -33,7 +33,8 @@ function DoughnutChart({ totalInterest, investmentAmount, maturityValue }) {
         color: '#000000',
       },
       formatter() {
-        return `${this.key} <strong>\u20B9 ${this.y.toLocaleString("en-In")}</strong>`
+        // return `${this.key} <strong>\u20B9 ${this.y.toLocaleString("en-In")}</strong>`
+        return `<span style="color:#979797"> ${this.key}    <span style="color:#1B1C20; font-weight: 600;">\u20B9 ${Number(this.y.toFixed(0)).toLocaleString("en-In")}</span> </span>`
       },
       labels: {
         enabled: false,
