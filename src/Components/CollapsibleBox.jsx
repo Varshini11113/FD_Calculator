@@ -21,7 +21,7 @@ export default function CollapsibleBox({ heading, content = "", isFormula = fals
   return (
     <>
       <Collapsible
-        trigger={[<div className='pr-[15px] '>{heading}</div>, <HiOutlineChevronDown style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px', marginRight: "-10px"}} />]}
+        trigger={[<div className='pr-[15px] npm '>{heading}</div>, <HiOutlineChevronDown style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px', marginRight: "-10px"}} />]}
         triggerWhenOpen={[<div className='pr-[15px]'>{heading}</div>, <HiOutlineChevronUp style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px', marginRight: "-10px" }} />]}
         triggerStyle={style}
 
