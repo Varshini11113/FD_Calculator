@@ -35,12 +35,12 @@ export default function Home() {
   function calculate()  {
     let cumulativeAmount = (totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
-      cumulativeAmount += Number(((cumulativeAmount * interestRate) / 100).toFixed(0));
+      cumulativeAmount += Number(((cumulativeAmount * interestRate) / 100));
     }
-    let dummyest = (Number(cumulativeAmount - totalInvestment));
+    let dummyest = (Math.round(cumulativeAmount - totalInvestment));
     setDummyTotalInvestment(totalInvestment);
     setEstReturns(dummyest);
-    setMaturityValue((Number(cumulativeAmount)));
+    setMaturityValue(Math.round(cumulativeAmount));
     calculateGraphPoints();
   }
   
