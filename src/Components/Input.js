@@ -3,17 +3,18 @@ import styles from '../styles/Input.module.scss'
 export default function Input({ id, type = '', min = 0, max, step = 1, value, setValue }) {
 
     const [textValue, setTextValue] = useState(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In") + ((type === 'percentage') ? '%' : ''));
+    const [maxError, setMaxError]  = useState(false);
 
 
     const handleSliderValue = (event) => {
         let tempValue = event.target.value;
         setValue(Number(tempValue));
         setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(tempValue).toLocaleString("en-In") + ((type === 'percentage') ? '%' : ''));
-        //console.log(value, textValue);
     }
 
 
     const addSymbol = (event) => {
+        setMaxError(false);
         let tempValue = event.target.value;
         if (!(String(textValue).charAt(0) == '\u20B9')) {
             tempValue = ((type === 'rupees') ? '\u20B9' : '') + Number(tempValue).toLocaleString("en-In");
@@ -34,6 +35,12 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
     const handleTextValue = (event) => {
 
         let tempValue = event.target.value;
+        if (event.target.value > max) {
+            setMaxError(true);
+        }
+        else {
+            setMaxError(false);
+        }
         if ((!(isNaN(tempValue)) && tempValue > 0 && tempValue <= max) || tempValue == '' || tempValue == '0') {
 
             if (tempValue == "") {
@@ -50,10 +57,6 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                 setTextValue(tempValue);
             }
             setValue(Number(tempValue));
-        }
-
-        if (tempValue > max){
-            tempValue = max;
         }
 
     };
@@ -73,8 +76,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                         className={' accent-[#00D382] bg-transparent my-4 mr-[25px]'}
                     />
                 </div>
-                {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>minimum value is {min}.</div> : ''}
-                {/* {(value > max) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>maximum value is {max}.</div> : ''} */}
+                {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[8px] -mb-[12px]'>minimum value is {min.toLocaleString('en-In')}.</div> : (maxError) ? <div className=' text-red-600 text-sm font-normal -mt-[8px] -mb-[12px]'>maximum value is {max.toLocaleString('en-In')}.</div> : ''}
             </div>
                 
                 
