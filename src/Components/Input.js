@@ -1,85 +1,6 @@
 import { useState } from 'react';
-import styles from '@/styles/Input.module.css'
+import styles from '../styles/Input.module.scss'
 export default function Input({ id, type = '', min = 0, max, step = 1, value, setValue }) {
-
-    // const handleValue = (event) => {
-
-    //     if (event.target.value.charAt(0) == '\u20B9') {
-    //         event.target.value = event.target.value.slice(1);
-    //     }
-    //     if (event.target.value.charAt(-1) == '%') {
-    //         event.target.value = event.target.value.slice(0,-1);
-    //     }
-    //     event.target.value = Number(event.target.value.replace(/,/g, ''));
-        
-    //     if (!(isNaN(event.target.value)) && event.target.value > 0 && event.target.value <= max) {
-    //         if (event.target.value == "") {
-    //             setValue(0);
-    //         }
-    //         else if (event.target.value.length == 2 && event.target.value.charAt(0) == '0') {
-    //             setValue(Number(event.target.value.charAt(1)));
-    //         }
-    //         else {
-    //             setValue(Number(event.target.value));
-    //         }
-    //     }
-
-    // };
-
-       //New==>
-    // const [dollars, setDollars] = useState("");
-    // const [percent, setPercent] = useState("");
-    // const [formattedValue, setFormattedValue] = useState(((type === 'rupees') ? '$' : '') + value + ((type === 'percentage') ? '%' : ''));
-    // const handleFocus = (event) =>{
-    //     setFormattedValue(Number(event.target.value.replace(/[\$\%]/g, "")));
-    //     // console.log(cleanValue);
-    // }
- 
-    // const handleBlur = (event) =>{
-    //     setFormattedValue(((type === 'rupees') ? '$' : '') + event.target.value + ((type === 'percentage') ? '%' : ''));
-    //     // console.log("Blur");
-
-    // }
-    // const handleChange = (event) =>{
-    //     let input = event.target.value;
-    //     setFormattedValue();
-    //     const isValid = /^(\d+(\.\d{1,2})?)$/.test(input);
-    //     isValid ? setFormattedValue(input) : setFormattedValue(min);
-    //      // remove $ and % symbols
-    //     // const isValid = /^(\d+(\.\d{1,2})?)$/.test(cleanValue);
-    //     // console.log(isValid)
-    // }
-    // const handleChange = (event) => {
-    //     let newValue = event.target.value;
-    //     if (newValue.startsWith("$")) {
-    //       newValue = newValue.replace("$", "");
-    //       setValue(newValue);
-    //     } else if (newValue.endsWith("%")) {
-    //       newValue = newValue.replace("%", "");
-    //     }
-    //      if (/^\d+(\.\d{0,2})?$/.test(newValue)) {
-    //         setValue(newValue);
-    //     //   setPercent(newValue);
-    //     }
-    //   };
-
-    //   const handleBlur = (event) => {
-    //     let newValue = event.target.value;
-    //     if (newValue.startsWith("$")) {
-    //       newValue = newValue.replace("$", "");
-    //     } else if (newValue.endsWith("%")) {
-    //       newValue = newValue.replace("%", "");
-    //     }
-    //       newValue = parseFloat(newValue);
-    //       if (isNaN(newValue)) {
-    //         newValue = min;
-    //       } else if (newValue < min) {
-    //         newValue = min;
-    //       } else if (newValue > max) {
-    //         newValue = max;
-    //       }
-    //       setValue(newValue);
-    //   };
 
     const [textValue, setTextValue] = useState(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In") + ((type === 'percentage') ? '%' : ''));
 
@@ -122,12 +43,23 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                 tempValue = tempValue.charAt(1);
             }
             setTextValue(tempValue);
+            if (!(type==='rupees'||type==='percentage')) {
+                setTextValue(Number(tempValue));    
+            }
+            else{
+                setTextValue(tempValue);
+            }
             setValue(Number(tempValue));
+        }
+
+        if (tempValue > max){
+            tempValue = max;
         }
 
     };
     return (
-        <div className={styles.inputBox}>
+        <div className="app-bg-container overflow-hidden"> 
+            <div className={styles.inputBox}>
             <div>
                 <div>
                     <input
@@ -142,6 +74,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                     />
                 </div>
                 {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>minimum value is {min}.</div> : ''}
+                {(value > max) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>maximum value is {max}.</div> : ''}
             </div>
                 
                 
@@ -161,5 +94,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                 </div>
                 
         </div>
+        </div>
+        
     )
 }

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import Input from "../Components/Input.jsx";
-import LineChart from "../Components/LineChart.jsx";
-import DoughnutChart from "@/Components/DoughnutChart.jsx";
-import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
-import RelatedCalculator from "@/Components/RelatedCalculator.jsx";
+import Input from "../Components/Input.js";
+import LineChart from "../Components/LineChart.js";
+import DoughnutChart from "../Components/DoughnutChart.js";
+import CollapsibleBox from "../Components/CollapsibleBox.js";
+import RelatedCalculator from "../Components/RelatedCalculator.js";
 
 import { FaChartPie, FaChartLine } from "react-icons/fa";
 import { MdOutlineShowChart } from "react-icons/md";
@@ -47,7 +47,7 @@ export default function Home() {
 
   function calculateGraphPoints()  {
     let points = [];
-    let cumulativeAmount: number = (totalInvestment);
+    let cumulativeAmount = (totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
       points.push(cumulativeAmount); //[100000, 107000, 114490]
       cumulativeAmount += Number((cumulativeAmount * interestRate) / 100);
@@ -63,18 +63,13 @@ export default function Home() {
         <title>FD Calculator</title>
       </Head>
 
-      <div
-        className={
-          "bg-bg_image w-full h-full bg-center bg-cover object-cover fixed"
-        }
-      />
-
       <main
         className={
           "relative [@media(max-width:1200px)]:p-5 [@media(min-width:1200px)]:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] "
         }
       >
-        <div>
+        <div className="app-bg-container overflow-hidden">
+        <div className="mt-[5rem]">
           <div
             className={
               "text-[#000000] font-semibold text-[36px] text-center"
@@ -222,7 +217,7 @@ export default function Home() {
               <div className={" relative object-right-top [@media(min-width:200px)]:h-auto md:w-[100%]"}>
                 {isLineChart ? (
                   <>
-                    <LineChart points={graphPoints} />
+                    <LineChart key='' points={graphPoints} />
                     
                   </>
                 ) : (
@@ -299,7 +294,7 @@ export default function Home() {
           />
 
           <CollapsibleBox
-            heading={'What is the lock-in period of FD investment?            '}
+            heading={'What is the lock-in period of FD investment?'}
             content={'FDs offered on FundsIndia have a typical lock-in period starting from 12 Months all the way up to 5 Years. It varies from partner to partner            '}
           />
 
@@ -309,12 +304,12 @@ export default function Home() {
           />
 
           <CollapsibleBox
-            heading={'What are the tax implications of an FD investment?            '}
+            heading={'What are the tax implications of an FD investment?'}
             content={'The interest earned on fixed deposits (FDs)is taxable and the rate of tax depends on the individual\'s tax slab. The interest earned on an FD is added to the individual\'s total taxable income and is taxed as per their applicable tax slab. Additionally, TDS (Tax Deducted at Source) is applicable on fixed deposit interest if the interest earned in a financial year is more than INR 40,000 for an individual or INR 50,000 for a Hindu Undivided Family (HUF). In such cases, TDS will be deducted at the rate of 10% before crediting the interest to the account.            '}
           />
 
           <CollapsibleBox
-            heading={'How can you use the FD calculator?            '}
+            heading={'How can you use the FD calculator?'}
             content={'This calculator is very intuitive as it only takes the amount you are investing, the tenure and interest rate and can give you the earnings at the time of maturity and also year on year growth via a graph.            '}
           />
           <CollapsibleBox
@@ -361,6 +356,8 @@ export default function Home() {
 
             <RelatedCalculator name={"SWP Calculator"} path={"#"} />
           </div>
+        </div>
+
         </div>
       </main>
     </>

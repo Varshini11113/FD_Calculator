@@ -74,7 +74,7 @@ function DoughnutChart({ totalInterest, investmentAmount, maturityValue }) {
 
   return (
 
-    <HighchartsReact highcharts={Highcharts} options={option} />
+    <div className="app-bg-container overflow-hidden"> <HighchartsReact highcharts={Highcharts} options={option} /> </div>
 
   )
 }
