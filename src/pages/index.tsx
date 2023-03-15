@@ -17,13 +17,13 @@ export default function Home() {
   const [isLineChart, setCheck] = useState(true);
   const [graphPoints, setGraphPoints] = useState([107000, 114490, 122504, 131080, 140255, 150073, 160578, 171819, 183846,
     196715]);
-  const [maturityValue, setMaturityValue] = useState(196716);
-  const [estReturns, setEstReturns] = useState(96716);
+  const [maturityValue, setMaturityValue] = useState(196715);
+  const [estReturns, setEstReturns] = useState(96715);
 
   
   // useEffect(() => {
   //   console.log('mat val changed to:', maturityValue);
-  //   setEstReturns(Math.round(maturityValue - totalInvestment));
+  //   setEstReturns(Number(maturityValue - totalInvestment));
   //   calculateGraphPoints();
   // }, [maturityValue]);
 
@@ -35,12 +35,12 @@ export default function Home() {
   function calculate()  {
     let cumulativeAmount = totalInvestment;
     for (let i = 1; i <= timePeriod; i++) {
-      cumulativeAmount += (cumulativeAmount * interestRate) / 100;
+      cumulativeAmount += Math.round(Number((cumulativeAmount * interestRate) / 100));
     }
-    let dummyest = Math.round(cumulativeAmount - totalInvestment);
+    let dummyest = Math.round(Number(cumulativeAmount - totalInvestment));
     setDummyTotalInvestment(totalInvestment);
     setEstReturns(dummyest);
-    setMaturityValue(Math.round(cumulativeAmount));
+    setMaturityValue(Math.round(Number(cumulativeAmount)));
     calculateGraphPoints();
   }
   
@@ -50,7 +50,7 @@ export default function Home() {
     let cumulativeAmount: number = Number(totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
       points.push(cumulativeAmount); //[100000, 107000, 114490]
-      cumulativeAmount += Math.round((cumulativeAmount * interestRate) / 100);
+      cumulativeAmount += Number((cumulativeAmount * interestRate) / 100);
     }
     points.push(cumulativeAmount);
     setGraphPoints(points);
