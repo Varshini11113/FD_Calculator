@@ -33,21 +33,21 @@ export default function Home() {
   }, [estReturns]);
 
   function calculate()  {
-    let cumulativeAmount = totalInvestment;
+    let cumulativeAmount = (totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
-      cumulativeAmount += Math.round(Number((cumulativeAmount * interestRate) / 100));
+      cumulativeAmount += Number(((cumulativeAmount * interestRate) / 100).toFixed(0));
     }
-    let dummyest = Math.round(Number(cumulativeAmount - totalInvestment));
+    let dummyest = (Number(cumulativeAmount - totalInvestment));
     setDummyTotalInvestment(totalInvestment);
     setEstReturns(dummyest);
-    setMaturityValue(Math.round(Number(cumulativeAmount)));
+    setMaturityValue((Number(cumulativeAmount)));
     calculateGraphPoints();
   }
   
 
   function calculateGraphPoints()  {
     let points = [];
-    let cumulativeAmount: number = Number(totalInvestment);
+    let cumulativeAmount: number = (totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
       points.push(cumulativeAmount); //[100000, 107000, 114490]
       cumulativeAmount += Number((cumulativeAmount * interestRate) / 100);
