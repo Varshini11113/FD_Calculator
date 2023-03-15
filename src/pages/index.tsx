@@ -23,7 +23,7 @@ export default function Home() {
   
   // useEffect(() => {
   //   console.log('mat val changed to:', maturityValue);
-  //   setEstReturns(Math.ceil(maturityValue - totalInvestment));
+  //   setEstReturns(Math.round(maturityValue - totalInvestment));
   //   calculateGraphPoints();
   // }, [maturityValue]);
 
@@ -37,10 +37,10 @@ export default function Home() {
     for (let i = 1; i <= timePeriod; i++) {
       cumulativeAmount += (cumulativeAmount * interestRate) / 100;
     }
-    let dummyest = Math.ceil(cumulativeAmount - totalInvestment);
+    let dummyest = Math.round(cumulativeAmount - totalInvestment);
     setDummyTotalInvestment(totalInvestment);
     setEstReturns(dummyest);
-    setMaturityValue(Math.ceil(cumulativeAmount));
+    setMaturityValue(Math.round(cumulativeAmount));
     calculateGraphPoints();
   }
   
@@ -50,7 +50,7 @@ export default function Home() {
     let cumulativeAmount: number = Number(totalInvestment);
     for (let i = 1; i <= timePeriod; i++) {
       points.push(cumulativeAmount); //[100000, 107000, 114490]
-      cumulativeAmount += Math.ceil((cumulativeAmount * interestRate) / 100);
+      cumulativeAmount += Math.round((cumulativeAmount * interestRate) / 100);
     }
     points.push(cumulativeAmount);
     setGraphPoints(points);
