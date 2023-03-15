@@ -58,7 +58,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
 
     };
     return (
-        <div className="app-bg-container overflow-hidden"> 
+        
             <div className={styles.inputBox}>
             <div>
                 <div>
@@ -74,14 +74,13 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                     />
                 </div>
                 {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>minimum value is {min}.</div> : ''}
-                {(value > max) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>maximum value is {max}.</div> : ''}
+                {/* {(value > max) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>maximum value is {max}.</div> : ''} */}
             </div>
                 
                 
                 <div>
                 <input
                     type="text"
-                    // value={((type === 'rupees') ? '$' : '') + value + ((type === 'percentage') ? '%' : '')}
                     value={textValue}
                     id={`${id}Label`}
                     min={min}
@@ -93,8 +92,6 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                 />
                 </div>
                 
-        </div>
-        </div>
-        
+        </div>        
     )
 }

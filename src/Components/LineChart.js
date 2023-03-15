@@ -108,9 +108,8 @@ export default function Chart({ points }) {
 
     return (
 
-        <div className="app-bg-container overflow-hidden"> 
+ 
             <HighchartsReact highcharts={Highcharts} options={options} />
-        </div>
         
 
     )
