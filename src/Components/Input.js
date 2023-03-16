@@ -76,7 +76,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                         className={' accent-[#00D382] bg-transparent my-4 mr-[25px]'}
                     />
                 </div>
-                {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[8px] -mb-[12px]'>minimum value is {min.toLocaleString('en-In')}.</div> : (maxError) ? <div className=' text-red-600 text-sm font-normal -mt-[8px] -mb-[12px]'>maximum value is {max.toLocaleString('en-In')}.</div> : ''}
+                {(value < min) ? <div className=' text-[#FF7D7D] text-sm font-normal -mt-[8px] -mb-[12px]'>minimum value is {min.toLocaleString('en-In')}.</div> : (maxError) ? <div className=' text-[#FF7D7D] text-sm font-normal -mt-[8px] -mb-[12px]'>maximum value is {max.toLocaleString('en-In')}.</div> : ''}
             </div>
                 
                 
