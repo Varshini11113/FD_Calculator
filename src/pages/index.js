@@ -65,7 +65,7 @@ export default function Home() {
 
       <main
         className={
-          "relative [@media(max-width:1200px)]:p-5 [@media(min-width:1200px)]:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] "
+          "relative font-['Poppins'] text-[14px] [@media(max-width:1200px)]:p-5 [@media(min-width:1200px)]:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] "
         }
       >
         <div className="app-bg-container overflow-hidden">
